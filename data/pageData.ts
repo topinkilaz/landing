@@ -8,7 +8,7 @@ export interface PageContent {
 
 const pageData: Record<string, PageContent> = {
   '1': {
-    name: 'Juana Azurduy de Padilla',
+    name: 'JUANA AZURDUY',
     image: '/juana_z.png',
     videos: {
       es: 'SyELQ3P0tXc',
@@ -16,7 +16,7 @@ const pageData: Record<string, PageContent> = {
     }
   },
   '2': {
-    name: 'Jaime de Zudañez',
+    name: 'JAIME DE ZUDÁÑEZ',
     image: '/jaime_z.png',
     videos: {
       es: 'SyELQ3P0tXc',
