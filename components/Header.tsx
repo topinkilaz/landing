@@ -16,7 +16,7 @@ export default function Header({ pageName = "Personajes Históricos" }: HeaderPr
         marginBottom: '-20px'
       }}
     >
-      <div className="relative" style={{ marginTop: '-20px', marginBottom: '-20px' }}>
+      <div className="relative " style={{ marginTop: '-20px', marginBottom: '-20px' }}>
         <Link href="/">
           <Image
             src="/icon3.png"

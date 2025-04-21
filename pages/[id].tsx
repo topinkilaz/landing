@@ -24,7 +24,7 @@ export default function DynamicPage() {
 
           {/* Fondo de imagen */}
           <div className="absolute inset-0 z-0 flex items-center">
-            <div className="relative w-full h-full max-w-4xl max-h-[80vh] ml-2 mb-80 md:ml-8 lg:ml-10 lg:mt-20 md:mb-92 lg:mb-0 ">
+            <div className="relative w-full h-full max-w-4xl max-h-[80vh] ml-20 mr-20 mb-80 md:ml-8 lg:ml-10 lg:mt-20 md:mb-92 lg:mb-0 ">
               <Image
                 src={content.image}
                 alt="Background"
