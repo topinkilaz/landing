@@ -1,21 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import Header from "../components/Header";
+
 import { useRouter } from "next/router";
 import pageData, { Language } from "../data/pageData";
+import Loading from "../components/loading";
 
 export default function DynamicPage() {
   const [language, setLanguage] = useState<Language>("es");
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
 
   const pageId = typeof id === "string" ? id : "1";
   const content = pageData[pageId] || pageData["1"];
 
+  // Control de estado de carga
+  useEffect(() => {
+    // Activar el loading cuando la ruta cambia
+    const handleStart = () => setLoading(true);
+    // Desactivar el loading cuando la navegación termina
+    const handleComplete = () => {
+      setTimeout(() => setLoading(false), 800); // Pequeño retraso para asegurar que todo se cargó
+    };
+
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
+
+    // Verificar si la página actual ya está cargada
+    if (router.isReady) {
+      setTimeout(() => setLoading(false), 1000); // Desactivar loading después de 1 segundo en la carga inicial
+    }
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleComplete);
+      router.events.off('routeChangeError', handleComplete);
+    };
+  }, [router]);
+
+  // Escuchar también la carga completa de la página
+  useEffect(() => {
+    // Función para desactivar loading cuando la página esté completamente cargada
+    const handleLoad = () => setLoading(false);
+    window.addEventListener('load', handleLoad);
+    
+    return () => window.removeEventListener('load', handleLoad);
+  }, []);
+
   return (
     <>
-      <Header pageName={content.name}  description={content.description}  />
+      {loading && <Loading />}
+      
+      <Header pageName={content.name} description={content.description} />
 
       <div className="home-cover">
         <div className="relative h-screen w-full overflow-hidden">
@@ -31,6 +70,7 @@ export default function DynamicPage() {
                 fill
                 className="object-contain"
                 priority
+                onLoad={() => setTimeout(() => setLoading(false), 200)}
               />
             </div>
           </div>
@@ -73,11 +113,12 @@ export default function DynamicPage() {
               >
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl "
-                  src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0`}
+                  src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0&modestbranding=1`}
                   title={`YouTube video player - ${language.toUpperCase()}`}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  onLoad={() => setTimeout(() => setLoading(false), 500)}
                 />
               </div>
             </div>
@@ -94,12 +135,6 @@ export default function DynamicPage() {
               height={30}
               alt="Footer Logo 1"
             />
-           {/*  <Image
-              src="/icon3.png"
-              width={100}
-              height={30}
-              alt="Footer Logo 2"
-            /> */}
             <Image
               src="/logo_quique.png"
               width={100}
