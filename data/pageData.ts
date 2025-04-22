@@ -10,7 +10,7 @@ export interface PageContent {
 const pageData: Record<string, PageContent> = {
   "1": {
     name: "ANTONIO JOSE DE SUCRE",
-    description:"Bolivia nace libre por la voluntad de sus hijos y el sacrificio de América.",
+    description: "Vencedor en Ayacucho, leyenda en la vida.",
     image: "/antonio_s.png",
     videos: {
       es: "SyELQ3P0tXc",
@@ -19,14 +19,13 @@ const pageData: Record<string, PageContent> = {
   },
   "2": {
     name: "JAIME ZUDAÑEZ",
-    description:"description",
+    description: "description",
     image: "/jaime_z.png",
     videos: {
       es: "SyELQ3P0tXc",
       en: "DoBJAz3Xk90",
     },
   },
-  
 };
 
 export default pageData;
