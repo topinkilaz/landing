@@ -10,7 +10,6 @@ const Loading: React.FC = () => {
           thickness={4}
           sx={{ color: '#5e2129' }} 
         />
-        {/* <p className="text-white mt-4 text-xl font-medium">Cargando...</p> */}
       </div>
     </div>
   );

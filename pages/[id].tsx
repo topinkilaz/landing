@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import Header from "../components/Header";
@@ -10,45 +10,68 @@ import Loading from "../components/loading";
 export default function DynamicPage() {
   const [language, setLanguage] = useState<Language>("es");
   const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
   const { id } = router.query;
 
   const pageId = typeof id === "string" ? id : "1";
   const content = pageData[pageId] || pageData["1"];
 
-  // Control de estado de carga
+  // Control de estado de carga en cambios de ruta
   useEffect(() => {
-    // Activar el loading cuando la ruta cambia
-    const handleStart = () => setLoading(true);
-    // Desactivar el loading cuando la navegación termina
-    const handleComplete = () => {
-      setTimeout(() => setLoading(false), 800); // Pequeño retraso para asegurar que todo se cargó
+    const handleStart = () => {
+      // Reset states on route change
+      setLoading(true);
+      setImageLoaded(false);
+      setVideoLoaded(false);
+      
+      // Clear any existing timeouts
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
 
     router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
-
-    // Verificar si la página actual ya está cargada
-    if (router.isReady) {
-      setTimeout(() => setLoading(false), 1000); // Desactivar loading después de 1 segundo en la carga inicial
-    }
-
+    
     return () => {
       router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, [router]);
 
-  // Escuchar también la carga completa de la página
+  // Effect para manejar la carga inicial y la finalización
   useEffect(() => {
-    // Función para desactivar loading cuando la página esté completamente cargada
-    const handleLoad = () => setLoading(false);
-    window.addEventListener('load', handleLoad);
-    
-    return () => window.removeEventListener('load', handleLoad);
-  }, []);
+    // Si ambos elementos críticos están cargados, o ha pasado el tiempo mínimo
+    if ((imageLoaded && videoLoaded) || !router.isReady) {
+      timeoutRef.current = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+    }
+
+    // mostrar la página después de 5 segundos aunque no todo esté cargado
+    const safetyTimeout = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      clearTimeout(safetyTimeout);
+    };
+  }, [imageLoaded, videoLoaded, router.isReady]);
+
+  // Función para manejar cuando se carga la imagen principal
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  // Función para manejar cuando se carga el video
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
 
   return (
     <>
@@ -70,7 +93,8 @@ export default function DynamicPage() {
                 fill
                 className="object-contain"
                 priority
-                onLoad={() => setTimeout(() => setLoading(false), 200)}
+                onLoad={handleImageLoad}
+                onError={() => setImageLoaded(true)} 
               />
             </div>
           </div>
@@ -118,7 +142,7 @@ export default function DynamicPage() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  onLoad={() => setTimeout(() => setLoading(false), 500)}
+                  onLoad={handleVideoLoad}
                 />
               </div>
             </div>
@@ -134,12 +158,14 @@ export default function DynamicPage() {
               width={100}
               height={30}
               alt="Footer Logo 1"
+              onLoad={() => {}} 
             />
             <Image
               src="/logo_quique.png"
               width={100}
               height={30}
               alt="Footer Logo 3"
+              onLoad={() => {}} 
             />
           </div>
           <p className="text-xs opacity-70">
