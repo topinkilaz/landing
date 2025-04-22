@@ -64,7 +64,7 @@ const pageData: Record<string, PageContent> = {
   },
   "7": {
     name: "ANGEL MARIANO TORO",
-    description: "Jurista y político destacado en la Revolución de Chuquisaca.",
+    description: "Político destacado en la Revolución de Chuquisaca.",
     image: "/angel_m.png",
     videos: {
       es: "SyELQ3P0tXc",
