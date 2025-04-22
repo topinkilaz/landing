@@ -15,7 +15,7 @@ export default function DynamicPage() {
 
   return (
     <>
-      <Header pageName={content.name} />
+      <Header pageName={content.name}  description={content.description}  />
 
       <div className="home-cover">
         <div className="relative h-screen w-full overflow-hidden">
@@ -23,7 +23,7 @@ export default function DynamicPage() {
           <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
           {/* Fondo de imagen */}
-          <div className="absolute inset-0 z-0 flex items-center">
+          <div className="absolute inset-0 z-10 flex items-center">
             <div className="relative w-full h-full max-w-4xl max-h-[80vh] ml-20 mr-20 mb-80 md:ml-8 lg:ml-10 lg:mt-20 md:mb-92 lg:mb-0 ">
               <Image
                 src={content.image}
@@ -39,7 +39,7 @@ export default function DynamicPage() {
           <div className="relative z-10 h-full flex items-center p-4">
             <div className="w-full max-w-6xl lg:ml-auto lg:mr-10 lg:w-1/2">
               {/* Selector de idioma */}
-              <div className="flex justify-center mb-4 space-x-4">
+              <div className="flex justify-center mb-4 space-x-4 z-30">
                 <button
                   onClick={() => setLanguage("es")}
                   className={`px-6 py-2 rounded-full font-medium transition-all shadow-lg backdrop-blur-sm ${
@@ -64,7 +64,7 @@ export default function DynamicPage() {
 
               {/* Contenedor del video */}
               <div
-                className="relative"
+                className="relative "
                 style={{
                   paddingBottom: "56.25%",
                   height: 0,
@@ -72,7 +72,7 @@ export default function DynamicPage() {
                 }}
               >
                 <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl "
                   src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0`}
                   title={`YouTube video player - ${language.toUpperCase()}`}
                   frameBorder="0"
@@ -94,14 +94,14 @@ export default function DynamicPage() {
               height={30}
               alt="Footer Logo 1"
             />
-            <Image
+           {/*  <Image
               src="/icon3.png"
               width={100}
               height={30}
               alt="Footer Logo 2"
-            />
+            /> */}
             <Image
-              src="/alcalde.png"
+              src="/logo_quique.png"
               width={100}
               height={30}
               alt="Footer Logo 3"

@@ -29,9 +29,9 @@ body {
       rgba(0, 0, 0, 0.1)
     ),
     url("../public/campana.png");
-  background-size: cover;
+  background-size: auto 75vh; /* Altura = 25% del viewport (75% hacia abajo) */
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: bottom center;
 }
 
 .iss-cover {
