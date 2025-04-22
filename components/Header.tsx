@@ -34,12 +34,12 @@ export default function Header({
         </Link>
 
         {/* Título - con margen reducido */}
-        <h1 className="font-body font-bold text-2xl md:text-3xl text-center "> 
+        <h1 className="font-body font-bold text-xl md:text-3xl text-center "> 
           {pageName}
         </h1>
 
         {/* Párrafo - con margen reducido */}
-        <p className="text-center text-sm md:text-base max-w-2xl opacity-90">
+        <p className="text-center text-xs md:text-base max-w-2xl opacity-90">
           {description}
         </p>
 
