@@ -72,13 +72,13 @@ export default function DynamicPage() {
                 }}
               >
                 <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl "
-                  src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0`}
-                  title={`YouTube video player - ${language.toUpperCase()}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+  className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+  src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0&fs=1`}
+  title={`YouTube video player - ${language.toUpperCase()}`}
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+  allowFullScreen
+/>
               </div>
             </div>
           </div>
