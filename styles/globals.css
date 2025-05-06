@@ -22,25 +22,27 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-.home-cover {
+/* .home-cover {
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.1)
     ),
-    url("../public/campana.png");
-  background-size: auto 75vh; /* Altura = 25% del viewport (75% hacia abajo) */
+    url("../public/campana.webp");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom center;
 }
 
-.iss-cover {
-  background-image: url("../public/iss.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top right;
-}
 
+@media (min-width: 1024px) {
+  .home-cover {
+    background-size: 100% auto;
+    background-position: center bottom;
+    min-height: 75vh;
+  }
+}
+ */
 /*.resimg {*/
 /*    position: absolute;*/
 /*    top: 50%;*/

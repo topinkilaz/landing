@@ -22,7 +22,7 @@ export default function Header({
       <div className="w-full max-w-4xl px-4 flex flex-col items-center h-full pt-4">
 
         {/* Logo  */}
-        <Link href="/" className="-mt-5 -mb-6"> 
+        <Link href="/" className="-mt-5 -mb-6 lg:-mt-9 lg:-mb-9"> 
           <Image
             src="/icon3.png"
             width={180}
@@ -34,12 +34,12 @@ export default function Header({
         </Link>
 
         {/* Título  */}
-        <h1 className="font-body font-bold text-xl md:text-3xl text-center "> 
+        <h1 className="font-body font-bold text-xl md:text-3xl lg:text-lg text-center "> 
           {pageName}
         </h1>
 
         {/* Párrafo  */}
-        <p className="text-center text-xs md:text-base max-w-2xl opacity-90">
+        <p className="text-center text-xs md:text-base max-w-2xl lg:text-base opacity-90">
           {description}
         </p>
 

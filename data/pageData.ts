@@ -13,8 +13,8 @@ const pageData: Record<string, PageContent> = {
     description: "Abogado y político charquino",
     image: "/jaime_zudanez.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "MJ1gxfkCEGE?si=uGs6BhyOOnOrt6yt",
+      en: "R6EnAwgAXlY?si=SyIN5b7GIcTlNEBs",
     },
   },
   "2": {
