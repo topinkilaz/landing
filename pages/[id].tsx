@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import pageData, { Language } from "../data/pageData";
 import Loading from "../components/loading";
 import CampanaBackground from "../components/CampanaBackground";
+import YouTubePlayer from "./youtubeplay";
 
 
 interface PageContent {
@@ -111,6 +112,14 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
     }
   }, [router.isReady, content, router]);
 
+  const getVideoId = () => {
+    if (!content || !content.videos || !language || !content.videos[language]) {
+      // Proporcionar un valor predeterminado o manejar el caso
+      return ""; // O un ID de video predeterminado
+    }
+    return content.videos[language];
+  };
+
   return (
     <>
       <Head>
@@ -175,16 +184,14 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
                 </div>
                 {/* Contenedor del video */}
                 <div className="relative" style={{ paddingBottom: "56.25%", height: 0, width: "100%" }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
-                    src={`https://www.youtube.com/embed/${content.videos[language]}?autoplay=0&rel=0&modestbranding=1`}
-                    title={`YouTube video player - ${language.toUpperCase()}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    onLoad={handleVideoLoad}
-                  />
-                </div>
+          {content && content.videos && (
+            <YouTubePlayer 
+              videoId={getVideoId()} 
+              language={language} 
+              onLoad={handleVideoLoad} 
+            />
+          )}
+        </div>
               </div>
             </div>
           </div>
