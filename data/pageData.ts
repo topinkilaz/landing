@@ -13,17 +13,17 @@ const pageData: Record<string, PageContent> = {
     description: "Abogado y político charquino",
     image: "/jaime_zudanez.png",
     videos: {
-      es: "MJ1gxfkCEGE?si=uGs6BhyOOnOrt6yt",
-      en: "R6EnAwgAXlY?si=SyIN5b7GIcTlNEBs",
+      es: "4xaWZBFB1gg?si=cuaC1dQQzkCS739r",
+      en: "9mGmCTFGK-s?si=rBAmbUntZWLvAT30",
     },
   },
   "2": {
-    name: "MARIANO SERRANO",
+    name: "JOSE MARIANO SERRANO",
     description: "Secretario y diputado en el Congreso de Tucumán",
     image: "/mariano_serrano.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "pHWEUNT4oxc?si=CYRzI1sYcw3tOjJn",
+      en: "XUioEu5dTso?si=yTwz8YzY-hkL5DYK",
     },
   },
   "3": {
@@ -31,8 +31,8 @@ const pageData: Record<string, PageContent> = {
     description: "Firmante de la Declaración de Independencia. ",
     image: "/casimiro.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "_NaIecg4ccg?si=8uNgeJKYgk0Wy0OP",
+      en: "UZBIYwdhKJE?si=JZpjdHbtayp6t00W",
     },
   },
   "4": {
@@ -40,8 +40,8 @@ const pageData: Record<string, PageContent> = {
     description: "Heroína de la independencia hispanoamericana",
     image: "/juana_a.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "hqb0lbOyuDg?si=eZJWU0LUjWQGtPAj",
+      en: "FN6DJgi6_Kk?si=5tX3P5HivjNLx06J",
     },
   },
   "5": {
@@ -49,8 +49,8 @@ const pageData: Record<string, PageContent> = {
     description: "Impulsor de la Revolución de Chuquisaca del 25 de mayo ",
     image: "/joaquin.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "ERY4W4XrWjQ?si=w-9KOCw4LroHHqtQ",
+      en: "pdOK3vYnZLM?si=LIxy2aITdbXjme_G",
     },
   },
   "6": {
@@ -58,8 +58,8 @@ const pageData: Record<string, PageContent> = {
     description: "Promotor del movimiento revolucionario del 25 de mayo ",
     image: "/jose_b.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "h7GikiDkPHM?si=O5U0IkJjj8JiHg8O",
+      en: "EFwp4NWw5lk?si=zEYjxDkVBKgwmaWL",
     },
   },
   "7": {
@@ -67,8 +67,8 @@ const pageData: Record<string, PageContent> = {
     description: "Político destacado en la Revolución de Chuquisaca.",
     image: "/angel_m.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "qjGhCLD-4Uc?si=eSH4dQ28yNjyP3az",
+      en: "5COCV41bL2k?si=RX0JqVjakSqZqcE4",
     },
   },
   "8": {
@@ -76,8 +76,8 @@ const pageData: Record<string, PageContent> = {
     description: "Ideólogo clave de la Revolución de Mayo.",
     image: "/mariano_moreno.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "xGxGhGGSNRM?si=UXgT2TloZ6NAClPY",
+      en: "RX6FQ0H5aBI?si=7vbofU62d0co-mSR",
     },
   },
   "9": {
@@ -85,8 +85,8 @@ const pageData: Record<string, PageContent> = {
     description: "Colaboró en la pacificación indígena",
     image: "/angel_mm.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "cfkt8QHd4nE?si=pH_yAvUieEjSY1Rr",
+      en: "lxUeqAp7E7A?si=7Xw4sOosRUqVbidt",
     },
   },
   "10": {
@@ -94,8 +94,8 @@ const pageData: Record<string, PageContent> = {
     description: "Militar, clave en la independencia de Sudamérica ",
     image: "/antonio_s.png",
     videos: {
-      es: "SyELQ3P0tXc",
-      en: "DoBJAz3Xk90",
+      es: "jFrXEZ-ngWc?si=-46elzxbMAcqga9x",
+      en: "1WcNWOrLMV8?si=sLH32GOSJsUCIPYo",
     },
   },
 };
