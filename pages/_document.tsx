@@ -10,6 +10,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/* Metadatos Open Graph por defecto */}
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Personajes Históricos" />
+          <meta property="og:image" content="https://personajes.sucre.bo/default-image.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://personajes.sucre.bo/default-image.png" />
+          
           {/* Script para mejorar la compatibilidad de pantalla completa */}
           <script
             dangerouslySetInnerHTML={{
