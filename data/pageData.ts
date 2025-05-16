@@ -65,7 +65,7 @@ const pageData: Record<string, PageContent> = {
   "7": {
     name: "ANGEL MARIANO TORO",
     description: "Político destacado en la Revolución de Chuquisaca.",
-    image: "/angel_m.png",
+    image: "/angelmm.png",
     videos: {
       es: "qjGhCLD-4Uc?si=eSH4dQ28yNjyP3az",
       en: "5COCV41bL2k?si=RX0JqVjakSqZqcE4",
@@ -74,19 +74,19 @@ const pageData: Record<string, PageContent> = {
   "8": {
     name: "MARIANO MORENO",
     description: "Ideólogo clave de la Revolución de Mayo.",
-    image: "/mariano_moreno.png",
+    image: "/marianomoreno.png",
     videos: {
-      es: "xGxGhGGSNRM?si=UXgT2TloZ6NAClPY",
-      en: "RX6FQ0H5aBI?si=7vbofU62d0co-mSR",
+      es: "bqLapMfO6TY?si=tqMo6n4XeJvAC-Ox",
+      en: "47JZNoOwZAs?si=T2Dk8sJvFV0kZAPB",
     },
   },
   "9": {
     name: "ANGEL MARIANO MOSCOSO",
     description: "Colaboró en la pacificación indígena",
-    image: "/angel_mm.png",
+    image: "/angelmm.png",
     videos: {
-      es: "cfkt8QHd4nE?si=pH_yAvUieEjSY1Rr",
-      en: "lxUeqAp7E7A?si=7Xw4sOosRUqVbidt",
+      es: "abs-qW1giKA?si=iszI_wDQ7LdSfYJ6",
+      en: "cl9b7GSY5rE?si=p7pvIVP_z6V1Y0XJ",
     },
   },
   "10": {
@@ -95,7 +95,7 @@ const pageData: Record<string, PageContent> = {
     image: "/antonio_s.png",
     videos: {
       es: "jFrXEZ-ngWc?si=-46elzxbMAcqga9x",
-      en: "1WcNWOrLMV8?si=sLH32GOSJsUCIPYo",
+      en: "JeitKYcp2B4?si=Qr-L3JnDPgwiyI8g",
     },
   },
 };
