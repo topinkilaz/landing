@@ -8,6 +8,9 @@ import pageData, { Language } from "../data/pageData";
 import Loading from "../components/loading";
 import CampanaBackground from "../components/CampanaBackground";
 import YouTubePlayer from "./youtubeplay";
+import IntroVideo from "./IntroVideo";
+import TransitionVideo from "./TransitionVideo";
+
 
 
 interface PageContent {
@@ -57,6 +60,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
 export default function DynamicPage({ initialId, initialContent }: PageProps) {
   const [language, setLanguage] = useState<Language>("es");
   const [loading, setLoading] = useState(true);
+
+  const [showIntroVideo, setShowIntroVideo] = useState(false);
+const [showTransitionVideo, setShowTransitionVideo] = useState(false);
+const [nextPageId, setNextPageId] = useState("");
   const loadedAssets = useRef({
     image: false,
     video: false
@@ -84,6 +91,21 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
     loadedAssets.current.video = true;
     checkLoaded();
   };
+
+  const handleNextCharacter = () => {
+  const currentId = parseInt(pageId);
+  const nextId = currentId + 1;
+  
+  // Verificar si existe el siguiente personaje
+  if (pageData[nextId.toString()]) {
+    setNextPageId(nextId.toString());
+    setShowTransitionVideo(true);
+  } else {
+    // Si no hay siguiente, ir al primero
+    setNextPageId("1");
+    setShowTransitionVideo(true);
+  }
+};
 
   // Timeout de seguridad
   useEffect(() => {
@@ -120,6 +142,12 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
     return content.videos[language];
   };
 
+  useEffect(() => {
+  if (router.isReady && pageId === "1") {
+    setShowIntroVideo(true);
+  }
+}, [router.isReady, pageId]);
+
   return (
     <>
       <Head>
@@ -129,7 +157,24 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
         <link rel="preload" href={content.image} as="image" />
       </Head>
 
-      {loading && <Loading />}
+   {/*    {loading && <Loading />} */}
+
+     {showIntroVideo && (
+  <IntroVideo 
+    videoUrl="https://res.cloudinary.com/dizvcibch/video/upload/v1747677390/0519_vzxuu8.mp4"
+    lastFrameDuration={2000} 
+    onComplete={() => setShowIntroVideo(false)} 
+  />
+)}
+
+{showTransitionVideo && (
+  <TransitionVideo 
+    videoUrl="https://res.cloudinary.com/dizvcibch/video/upload/v1747680120/0519_1_rcidni.mp4"
+    nextPageId={nextPageId}
+    isVisible={showTransitionVideo}
+  />
+)}
+     
 
       <div style={{ display: loading ? 'none' : 'block' }}>
         <Header pageName={content.name} description={content.description} />
@@ -196,6 +241,14 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
             </div>
           </div>
         </div>
+         <div className="fixed bottom-32 sm:bottom-16 right-10 z-30 flex space-x-4">
+  <button 
+    onClick={handleNextCharacter}
+    className="px-4 py-2 bg-white bg-opacity-30 rounded-full backdrop-blur-sm border border-white hover:bg-opacity-50 transition"
+  >
+    Siguiente Personaje
+  </button>
+</div>
 
         {/* Footer */}
         <footer className="fixed bottom-0 w-full text-white text-center py-2 z-20">
