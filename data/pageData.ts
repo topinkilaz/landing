@@ -4,6 +4,7 @@ export interface PageContent {
   name: string;
   image: string;
   description: string;
+  location: string; 
   videos: Record<Language, string>;
 }
 
@@ -11,6 +12,7 @@ const pageData: Record<string, PageContent> = {
   "1": {
     name: "JAIME ZUDAÑEZ",
     description: "Abogado y político charquino",
+    location: "CALLE COLÓN # 4",  
     image: "/jaime_zudanez.png",
     videos: {
       es: "4xaWZBFB1gg?si=cuaC1dQQzkCS739r",
@@ -20,6 +22,7 @@ const pageData: Record<string, PageContent> = {
   "2": {
     name: "JOSE MARIANO SERRANO",
     description: "Secretario y diputado en el Congreso de Tucumán",
+    location: "CALLE SAN ALBERTO # 150",
     image: "/mariano_serrano.png",
     videos: {
       es: "pHWEUNT4oxc?si=CYRzI1sYcw3tOjJn",
@@ -29,6 +32,7 @@ const pageData: Record<string, PageContent> = {
   "3": {
     name: "CASIMIRO OLAÑETA",
     description: "Firmante de la Declaración de Independencia. ",
+    location: "CALLE GRAU # 133",
     image: "/casimiro.png",
     videos: {
       es: "_NaIecg4ccg?si=8uNgeJKYgk0Wy0OP",
@@ -38,6 +42,7 @@ const pageData: Record<string, PageContent> = {
   "4": {
     name: "JUANA AZURDUY",
     description: "Heroína de la independencia hispanoamericana",
+    location: "CALLE ESPAÑA # 234",
     image: "/juana_a.png",
     videos: {
       es: "hqb0lbOyuDg?si=eZJWU0LUjWQGtPAj",
@@ -47,6 +52,7 @@ const pageData: Record<string, PageContent> = {
   "5": {
     name: "JOAQUÍN DE LEMOINE",
     description: "Impulsor de la Revolución de Chuquisaca del 25 de mayo ",
+    location: "CALLE CALVO # 31",
     image: "/joaquin.png",
     videos: {
       es: "ERY4W4XrWjQ?si=w-9KOCw4LroHHqtQ",
@@ -56,6 +62,7 @@ const pageData: Record<string, PageContent> = {
   "6": {
     name: "JOSÉ BENITO ALZÉRRECA",
     description: "Promotor del movimiento revolucionario del 25 de mayo ",
+    location: "PLAZA 25 DE MAYO ",
     image: "/jose_b.png",
     videos: {
       es: "h7GikiDkPHM?si=O5U0IkJjj8JiHg8O",
@@ -65,6 +72,7 @@ const pageData: Record<string, PageContent> = {
   "7": {
     name: "ANGEL MARIANO TORO",
     description: "Político destacado en la Revolución de Chuquisaca.",
+    location: "CALLE ESTUDIANTES # 2",
     image: "/angel_m.png",
     videos: {
       es: "qjGhCLD-4Uc?si=eSH4dQ28yNjyP3az",
@@ -74,6 +82,7 @@ const pageData: Record<string, PageContent> = {
   "8": {
     name: "MARIANO MORENO",
     description: "Ideólogo clave de la Revolución de Mayo.",
+    location: "CALLE BOLIVAR # 701",
     image: "/marianom.png",
     videos: {
       es: "bqLapMfO6TY?si=JFDqmstdNpAb8Ovp",
@@ -83,6 +92,7 @@ const pageData: Record<string, PageContent> = {
   "9": {
     name: "ANGEL MARIANO MOSCOSO",
     description: "Colaboró en la pacificación indígena",
+    location: "CALLE GRAU # 117",
     image: "/moscoso.png",
     videos: {
       es: "abs-qW1giKA?si=pfrOkrJxUGNG8js6",
@@ -92,6 +102,7 @@ const pageData: Record<string, PageContent> = {
   "10": {
     name: "ANTONIO J. DE SUCRE",
     description: "Militar, clave en la independencia de Sudamérica ",
+    location: "CALLE RAVELO #2",
     image: "/antonio_s.png",
     videos: {
       es: "jFrXEZ-ngWc?si=-46elzxbMAcqga9x",
