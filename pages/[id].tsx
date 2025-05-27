@@ -71,7 +71,7 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
   const content = pageData[pageId] || initialContent;
 
   // Definición del orden de la secuencia personalizada
-  const orderedSequence = ["10", "4", "2", "5", "9", "3", "8", "1", "7", "6"];
+  const orderedSequence = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   
   // Función para obtener la posición actual en la secuencia (1-10)
   const getCurrentPosition = () => {
@@ -88,16 +88,16 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
   const getTransitionVideoUrl = () => {
     // Mapeo de IDs a URLs de videos específicos
     const transitionVideos: Record<string, string> = {
-      "1": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800785/jaime_z_wqbldj.mp4",
-      "2": "https://res.cloudinary.com/dizvcibch/video/upload/v1747799618/jose_mariano_serrano_jazivq.mp4",
-      "3": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800341/casimiro_vv1btb.mp4",
-      "4": "https://res.cloudinary.com/dizvcibch/video/upload/v1747684784/0519_2_s8sldr.mp4",
-      "5": "https://res.cloudinary.com/dizvcibch/video/upload/v1747799934/a_juaquinleom_jwz7ts.mp4",
-      "6": "https://res.cloudinary.com/dizvcibch/video/upload/v1747677390/0519_vzxuu8.mp4",
-      "7": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800943/toro_npr6oz.mp4",
-      "8": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800596/mariano_moreno_eakv2y.mp4",
-      "9": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800175/moscoso_cta5bp.mp4",
-      "10": "https://res.cloudinary.com/dizvcibch/video/upload/v1747680120/0519_1_rcidni.mp4",
+      "1": "https://res.cloudinary.com/dizvcibch/video/upload/v1747680120/0519_1_rcidni.mp4",
+      "2": "https://res.cloudinary.com/dizvcibch/video/upload/v1747684784/0519_2_s8sldr.mp4",
+      "3": "https://res.cloudinary.com/dizvcibch/video/upload/v1747799618/jose_mariano_serrano_jazivq.mp4",
+      "4": "https://res.cloudinary.com/dizvcibch/video/upload/v1747799934/a_juaquinleom_jwz7ts.mp4",
+      "5": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800175/moscoso_cta5bp.mp4",
+      "6": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800341/casimiro_vv1btb.mp4",
+      "7": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800596/mariano_moreno_eakv2y.mp4",
+      "8": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800785/jaime_z_wqbldj.mp4",
+      "9": "https://res.cloudinary.com/dizvcibch/video/upload/v1747800943/toro_npr6oz.mp4",
+      "10": "https://res.cloudinary.com/dizvcibch/video/upload/v1747677390/0519_vzxuu8.mp4",
     };
     
     // Retornar la URL del video correspondiente al ID actual o un video por defecto
@@ -122,38 +122,22 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
     checkLoaded();
   };
   
-  const customRoutes: Record<string, string> = {
-    "10": "4",  
-    "4": "2",  
-    "2": "5",   
-    "5": "9",   
-    "9": "3",   
-    "3": "8",   
-    "8": "1", 
-    "1": "7",  
-    "7": "6",   
-    "6": "10",  
-  };
+ 
 
   const handleNextCharacter = () => {
-    let nextId = customRoutes[pageId];
-    
-    if (!nextId) {
-      const currentId = parseInt(pageId);
-      nextId = (currentId + 1).toString();
-      
-      if (!pageData[nextId] || parseInt(nextId) > 10) {
-        nextId = "1";
-      }
-    }
-    
-    if (!pageData[nextId]) {
-      nextId = "1"; 
-    }
-    
-    setNextPageId(nextId);
+  const currentId = parseInt(pageId);
+  const nextId = currentId + 1;
+  
+  // Verificar si existe el siguiente personaje
+  if (pageData[nextId.toString()]) {
+    setNextPageId(nextId.toString());
     setShowTransitionVideo(true);
-  };
+  } else {
+    
+    setNextPageId("1");
+    setShowTransitionVideo(true);
+  }
+};
 
   // Resetear estado de carga al cambiar de ruta
   useEffect(() => {
@@ -182,12 +166,28 @@ export default function DynamicPage({ initialId, initialContent }: PageProps) {
 
   return (
     <>
-      <Head>
-        <title>{content.name}</title>
-        <meta name="description" content={content.description} />
-        {/* Precarga de imagen para mejor performance */}
-        <link rel="preload" href={content.image} as="image" />
-      </Head>
+    
+<Head>
+  <title>{content.name}</title>
+  <meta name="description" content={content.description} />
+  
+  {/* TEMPORAL: URL fija para probar */}
+  <meta property="og:image" content="https://playful-haupia-a7857c.netlify.app/miniaturas/mantonio.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  
+  {/* Resto de meta tags */}
+  <meta property="og:title" content={content.name} />
+  <meta property="og:description" content={content.description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`https://playful-haupia-a7857c.netlify.app/${pageId}`} />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://playful-haupia-a7857c.netlify.app/miniaturas/mantonio.jpg" />
+  
+  <link rel="canonical" href={`https://playful-haupia-a7857c.netlify.app/${pageId}`} />
+</Head>
 
       {/* TransitionVideo con URL dinámica basada en la página actual */}
       {showTransitionVideo && (
